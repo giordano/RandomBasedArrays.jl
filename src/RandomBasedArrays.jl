@@ -6,7 +6,7 @@ struct RandomBasedArray{T,N} <: AbstractArray{T,N}
     parent::Array{T,N}
 end
 
-index(p::Array) = firstindex(p) + rand(eachindex(p)) % lastindex(p)
+index(p::Array) = rand(eachindex(p))
 
 Base.size(A::RandomBasedArray) = size(A.parent)
 Base.getindex(A::RandomBasedArray, ::Int) =
