@@ -70,3 +70,10 @@ julia> A
  12   6  19  11   8
   6  12   2  18   3
 ```
+
+## Related projects
+
+* [`OffsetArrays.jl`](https://github.com/JuliaArrays/OffsetArrays.jl):
+  Fortran-like arrays with arbitrary, zero or negative starting indices
+* [`TwoBasedIndexing.jl`](https://github.com/simonster/TwoBasedIndexing.jl):
+  Two-based indexing
