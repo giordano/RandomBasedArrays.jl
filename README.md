@@ -36,14 +36,14 @@ It is pointless to claim the superiority of one indexing over the other one, as
 they’re useful in different situations.
 
 As a matter of fact, many "math-oriented" languages (e.g., Fortran, Julia,
-Mathematica, MATLAB, R) default to 1-based indexing, even though probably the
-majority of the programming languages nowadays uses 0-based indexing.
+Mathematica, MATLAB, R), that are less likely to fiddle with pointers'
+addresses, default to 1-based indexing, even though probably the majority of the
+programming languages nowadays uses 0-based indexing.
 
-A good programming language, even if it defaults to either of the two indexing
-conventions, should provide an abstraction layer to forget which is the initial
-index.  For example, Fortran has
-[`lbound`](http://fortranwiki.org/fortran/show/lbound) to reference the first
-element of an array.  Besides the
+A good programming language, whatever indexing convention it uses, should
+provide an abstraction layer to let users forget which is the initial index.
+For example, Fortran has [`lbound`](http://fortranwiki.org/fortran/show/lbound)
+to reference the first element of an array.  Besides the
 [`first`](https://docs.julialang.org/en/v1/base/collections/#Base.first)
 function to reference the first element of a collection, the Julia programming
 language has different utilities to iterate over collections:
