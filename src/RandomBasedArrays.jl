@@ -10,6 +10,7 @@ RandomBasedArray(p::P) where {T,N,P<:AbstractArray{T,N}} =
 
 index(p::AbstractArray) = rand(eachindex(p))
 
+Base.parent(A::RandomBasedArray) = A.parent
 Base.size(A::RandomBasedArray) = size(A.parent)
 Base.getindex(A::RandomBasedArray, ::Int) =
     @inbounds getindex(A.parent, index(A.parent))
