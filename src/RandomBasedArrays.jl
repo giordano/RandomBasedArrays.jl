@@ -2,11 +2,13 @@ module RandomBasedArrays
 
 export RandomBasedArray
 
-struct RandomBasedArray{T,N} <: AbstractArray{T,N}
-    parent::Array{T,N}
+struct RandomBasedArray{T,N,P<:AbstractArray} <: AbstractArray{T,N}
+    parent::P
 end
+RandomBasedArray(p::P) where {T,N,P<:AbstractArray{T,N}} =
+    RandomBasedArray{T,N,P}(p)
 
-index(p::Array) = rand(eachindex(p))
+index(p::AbstractArray) = rand(eachindex(p))
 
 Base.size(A::RandomBasedArray) = size(A.parent)
 Base.getindex(A::RandomBasedArray, ::Int) =
