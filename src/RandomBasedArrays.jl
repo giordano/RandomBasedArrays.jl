@@ -11,15 +11,15 @@ RandomBasedArray(p::P) where {T,N,P<:AbstractArray{T,N}} =
 index(p::AbstractArray) = rand(eachindex(p))
 
 Base.parent(A::RandomBasedArray) = A.parent
-Base.size(A::RandomBasedArray) = size(A.parent)
+Base.size(A::RandomBasedArray) = size(parent(A))
 Base.getindex(A::RandomBasedArray, ::Int) =
-    @inbounds getindex(A.parent, index(A.parent))
+    @inbounds getindex(parent(A), index(parent(A)))
 Base.getindex(A::RandomBasedArray{T,N}, ::Vararg{Int,N}) where {T,N} =
-    getindex(A.parent, Base._ind2sub(A.parent, index(A.parent))...)
+    getindex(parent(A), Base._ind2sub(parent(A), index(parent(A)))...)
 Base.setindex!(A::RandomBasedArray, v, ::Int) =
-    @inbounds setindex!(A.parent, v, index(A.parent))
+    @inbounds setindex!(parent(A), v, index(parent(A)))
 Base.setindex!(A::RandomBasedArray{T,N}, v, ::Vararg{Int,N}) where {T,N} =
-    setindex!(A.parent, v, Base._ind2sub(A.parent, index(A.parent))...)
+    setindex!(parent(A), v, Base._ind2sub(parent(A), index(parent(A)))...)
 # Show a fixed copy of the array, otherwise the alignment algorithm would get
 # crazy trying to show a "mutating" array
 Base.show(io::IO, m::MIME"text/plain", A::RandomBasedArray) = show(io, m, copy(A))
