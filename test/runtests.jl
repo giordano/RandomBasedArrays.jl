@@ -16,7 +16,7 @@ using Random, Test
         @test parent(A) == [1 3 5; 2 0 6]
         A[0,0] = 42
         @test parent(A) == [1 3 5; 42 0 6]
-        @test repr(A) == "[3 1 5; 5 5 1]"
+        @test repr("text/plain", A) == "2×3 Array{Int64,2}:\n 3  42  6\n 3   1  5"
     elseif Sys.WORD_SIZE == 32
         @test size(A) === size(p)
         @test A[42] == 3
@@ -26,7 +26,7 @@ using Random, Test
         @test parent(A) == [1 3 5; 2 4 0]
         A[0,0] = 42
         @test parent(A) == [1 3 5; 2 42 0]
-        @test repr(A) == "[1 1 5; 1 5 3]"
+        @test repr("text/plain", A) == "[1 1 5; 1 5 3]"
     else
         @info "We are not on a 32- or 64-bit system"
     end
