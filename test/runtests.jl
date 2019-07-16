@@ -26,7 +26,7 @@ using Random, Test
         @test parent(A) == [1 3 5; 2 4 0]
         A[0,0] = 42
         @test parent(A) == [1 3 5; 2 42 0]
-        @test repr("text/plain", A) == "[1 1 5; 1 5 3]"
+        @test repr("text/plain", A) == "2×3 Array{Int32,2}:\n 1  2  42\n 1  1   5"
     else
         @info "We are not on a 32- or 64-bit system"
     end
