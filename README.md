@@ -72,12 +72,24 @@ most notable application of custom indices is probably the
 Other use cases of custom indices are shown in [this blog
 post](https://julialang.org/blog/2017/04/offset-arrays).
 
+## Installation
+
+The latest version of `RandomBasedArrays.jl` is available for Julia v1.0 and
+later releases, and can be installed with [Julia built-in package
+manager](https://julialang.github.io/Pkg.jl/stable/).  In a Julia session, after
+entering the package manager mode with `]`, run the command
+
+```julia
+pkg> add RandomBasedArrays
+```
+
+
 ## Usage
 
 ```julia
 julia> using RandomBasedArrays
 
-julia> A = RandomBasedArray(reshape(1:25, 5, 5))
+julia> A = RandomBasedArray(reshape(collect(1:25), 5, 5))
 5×5 Array{Int64,2}:
  15   7   4   2   6
   7  10  10   9  18
@@ -144,3 +156,8 @@ julia> A
   Fortran-like arrays with arbitrary, zero or negative starting indices
 * [`TwoBasedIndexing.jl`](https://github.com/simonster/TwoBasedIndexing.jl):
   Two-based indexing
+
+## License
+
+The `RandomBasedArrays.jl` package is licensed under the MIT "Expat" License.
+The original author is Mosè Giordano.
