@@ -18,60 +18,6 @@ the first index is random, so you don’t have to remember whether Julia uses 0-
 or 1-based indexing: you simply cannot ever know what the initial element will
 be.
 
-## Motivation
-
-This package takes a new stance in the longstanding debate whether arrays should
-have [0-based](https://en.wikipedia.org/wiki/Zero-based_numbering) or 1-based
-indexing.
-
-It is incredibly hard to convince people that there is no "one size fits all"
-indexing in programming, both alternatives have their merits:
-
-* 0-based indexing is natural every time you deal with offsets, e.g., when
-  referencing memory addresses
-* 1-based indexing is natural when you are counting elements: the 1st element is
-  "1", the 2nd element is "2", etc...
-
-It is pointless to claim the superiority of one indexing over the other one, as
-they’re useful in different situations.
-
-As a matter of fact, many "math-oriented" languages (e.g., Fortran, Julia,
-Mathematica, MATLAB, R), that are less likely to fiddle with pointers'
-addresses, default to 1-based indexing, even though probably the majority of the
-programming languages nowadays uses 0-based indexing.
-
-A good programming language, whatever indexing convention it uses, should
-provide an abstraction layer to let users forget which is the initial index.
-For example, Fortran has [`lbound`](http://fortranwiki.org/fortran/show/lbound)
-to reference the first element of an array.  Besides the
-[`first`](https://docs.julialang.org/en/v1/base/collections/#Base.first)
-function to reference the first element of a collection, the Julia programming
-language has different utilities to iterate over collections:
-
-* arrays are iterables, this means that you can write a `for` loop like
-  ```julia
-  for element in my_array
-	  # do things with the `element`...
-  end
-  ```
-  without using indices at all
-* [`eachindex`](https://docs.julialang.org/en/v1/base/arrays/#Base.eachindex) is
-  a function that returns an iterable object with all the indices of the array.
-
-Certainly, some times you need to use the indices of an array and know which is
-the first one.  In this case, the abstraction layer above is not useful.  Thus,
-it is important for a programming language to provide also a way to easily
-switch to the most appropriate indexing for the task at hand.  In Fortran you
-can set a different initial index for an array with the
-[`dimension`](https://docs.oracle.com/cd/E19957-01/805-4939/6j4m0vn8a/index.html)
-statement.  Julia allows you to define custom indices for you new array-like
-type, as described in the
-[documentation](https://docs.julialang.org/en/v1/devdocs/offset-arrays/).  The
-most notable application of custom indices is probably the
-[`OffsetArrays.jl`](https://github.com/JuliaArrays/OffsetArrays.jl) package.
-Other use cases of custom indices are shown in [this blog
-post](https://julialang.org/blog/2017/04/offset-arrays).
-
 ## Installation
 
 The latest version of `RandomBasedArrays.jl` is available for Julia v1.0 and
